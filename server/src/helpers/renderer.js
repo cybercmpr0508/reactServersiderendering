@@ -1,17 +1,19 @@
-import React from 'react'
+import React from "react";
 import { renderToString } from "react-dom/server";
-import {StaticRouter} from 'react-router-dom'
-import Routes from '../client/Routes'
-
-export default (req) => {
+import { StaticRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import Routes from "../client/Routes";
+import { renderRoutes } from "react-router-config";
+export default (req, store) => {
   const content = renderToString(
-    <StaticRouter location={req.path} context={{}}>
-      <Routes />
-    </StaticRouter>
-    
-    );
+    <Provider store={store}>
+      <StaticRouter location={req.path} context={{}}>
+        <di>{renderRoutes(Routes)}</di>
+      </StaticRouter>
+    </Provider>
+  );
 
-  const Html =`
+  const Html = `
     <html>
     <head></head>
     <body>
@@ -20,5 +22,5 @@ export default (req) => {
     </body>
     </html>
     `;
-  return Html
+  return Html;
 };
