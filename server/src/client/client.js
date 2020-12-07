@@ -9,7 +9,7 @@ import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
 import reducers from './reducers/index'
 import { renderRoutes } from "react-router-config";
-const store = createStore(reducers,{} , applyMiddleware(thunk))
+const store = createStore(reducers, window.INITIAL_STATE , applyMiddleware(thunk))
 
 
 ReactDOM.render(

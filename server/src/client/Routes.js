@@ -1,7 +1,7 @@
 import React from "react";
 
-import Home from './componets/Home'
-import UserList ,{loadData}from './componets/UsersList'
+import HomePage from './componets/pages/HomePage'
+import UsersListPage ,{loadData}from './componets/pages/UsersListPage'
 
 // export default () => {
 //     return (
@@ -15,14 +15,14 @@ import UserList ,{loadData}from './componets/UsersList'
 
 export default [
     {
+        ...HomePage,
         path: '/',
-        component: Home,
         exact:true
     },
     {
-        loadData,
-        path: '/users',
-        component: UserList,
+        ...UsersListPage,
+        path: '/users'
+         
          
     }
 ]
